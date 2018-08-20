@@ -55,5 +55,8 @@
     <Compile Include="StringBrazilianCPFDocumentExtensions.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Carubbi.Extensions.nuspec" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
