@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Carubbi.Extensions
 {
@@ -8,13 +9,25 @@ namespace Carubbi.Extensions
     /// </summary>
     public static class StreamExtensions
     {
+        /// <summary>
+        /// Copia uma stream para outra
+        /// </summary>
+        /// <param name="instance">Stream a ser copiada</param>
+        /// <param name="output">Stream de saída</param>
+        public static void CopyTo(this Stream instance, Stream output)
+        {
+            instance.Position = 0;
+            var buffer = new byte[8 * 1024];
+            int len;
+            while ((len = instance.Read(buffer, 0, buffer.Length)) > 0) output.Write(buffer, 0, len);
+        }
 
         /// <summary>
         /// Converte um objeto stream em byte array
         /// </summary>
         /// <param name="stream">Objeto stream a ser convertido</param>
         /// <returns>array de bytes</returns>
-        public static byte[] ToByteArray(this System.IO.Stream stream)
+        public static byte[] ToByteArray(this Stream stream)
         {
             long originalPosition = 0;
 
@@ -61,7 +74,7 @@ namespace Carubbi.Extensions
         /// <param name="readBuffer">Buffer a ser preenchido</param>
         /// <param name="totalBytesRead">Total de bytes a serem lidos (Byte Final)</param>
         /// <param name="bytesRead">Byte inicial</param>
-        private static void CopyBytes(System.IO.Stream stream, ref byte[] readBuffer, ref int totalBytesRead, int bytesRead)
+        private static void CopyBytes(Stream stream, ref byte[] readBuffer, ref int totalBytesRead, int bytesRead)
         {
             totalBytesRead += bytesRead;
 
