@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Carubbi.Extensions
 {
@@ -79,6 +80,14 @@ namespace Carubbi.Extensions
             }
         }
 
-
+        public static void CallGeneric(this object instance, Type argumentType, string methodName,
+            params object[] parameters)
+        {
+            var method = instance.GetType().GetMethod(methodName, parameters.Select(parameter => parameter.GetType()).ToArray());
+            if (method != null)
+            {
+                method.MakeGenericMethod(argumentType).Invoke(instance, parameters);
+            }
+        }
     }
 }
