@@ -89,5 +89,17 @@ namespace Carubbi.Extensions
                 method.MakeGenericMethod(argumentType).Invoke(instance, parameters);
             }
         }
+
+        public static T CallGeneric<T>(this object instance, Type argumentType, string methodName,
+            params object[] parameters)
+        {
+            var method = instance.GetType().GetMethod(methodName, parameters.Select(parameter => parameter.GetType()).ToArray());
+            if (method != null)
+            {
+                return (T)method.MakeGenericMethod(argumentType).Invoke(instance, parameters);
+            }
+
+            return default(T);
+        }
     }
 }
