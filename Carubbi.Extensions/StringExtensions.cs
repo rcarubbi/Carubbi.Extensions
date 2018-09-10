@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Carubbi.Extensions
@@ -63,5 +64,17 @@ namespace Carubbi.Extensions
 
             return regex1.Match(email).Success && regex2.Match(email).Success;
         }
+
+        public static string PadLeftWithPattern(this string instance, int times, string paddingPattern)
+        {
+            var stringBuilder = new StringBuilder();
+
+            for (var i = 0; i < times; i++)
+                stringBuilder.Append(paddingPattern);
+
+            stringBuilder.Append(instance);
+            return stringBuilder.ToString();
+        }
+
     }
 }

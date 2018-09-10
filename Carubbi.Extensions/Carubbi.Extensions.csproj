@@ -54,6 +54,7 @@
     <Compile Include="StreamExtensions.cs" />
     <Compile Include="StringBrazilianCPFDocumentExtensions.cs" />
     <Compile Include="StringExtensions.cs" />
+    <Compile Include="TypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Carubbi.Extensions.nuspec" />
