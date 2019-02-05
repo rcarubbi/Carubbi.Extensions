@@ -3,8 +3,7 @@
     public static class StringBrazilianCPFDocumentExtensions
     {
         /// <summary>
-        /// Valida CPF
-        /// Fonte: http://www.macoratti.net/11/09/c_val1.htm
+        /// Validação de CPF
         /// </summary>
         /// <param name="instance">CPF para ser validado</param>
         /// <returns>Retorna true caso seja um cpf válido e false caso não seja.</returns>
